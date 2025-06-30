@@ -1,0 +1,31 @@
+# Loan Default Prediction Project - Requirements File
+# Install all dependencies using: pip install -r requirements.txt
+
+# Core Data Science Libraries
+pandas>=1.5.0
+numpy>=1.21.0
+
+# Data Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Machine Learning Framework
+scikit-learn>=1.1.0
+
+# XGBoost Library
+xgboost>=1.6.0
+
+# Jupyter Notebook (Optional - for running in notebook environment)
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Additional Utilities (Optional but recommended)
+plotly>=5.0.0          # For interactive visualizations
+scipy>=1.9.0           # Scientific computing
+joblib>=1.1.0          # For model serialization
+openpyxl>=3.0.0        # For Excel file support
+xlrd>=2.0.0            # For older Excel files
+
+# Development Tools (Optional)
+ipython>=8.0.0         # Enhanced Python shell
+notebook>=6.4.0        # Jupyter notebook interface
