@@ -18,7 +18,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # 2. LOAD THE DATASET
-# Using the exact filename you provided.
 file_path = 'loan_train.csv'
 
 try:
@@ -27,11 +26,8 @@ try:
 except FileNotFoundError:
     print(f"Error: The file '{file_path}' was not found.")
     print("Please make sure the CSV file is in the same directory as the script.")
-    exit() # Exit the script if the file is not found
-
+    exit() 
 # 3. DATA CLEANING AND PREPROCESSING
-# (This part remains the same)
-
 # Fill missing values for categorical columns with the mode
 for col in ['Gender', 'Married', 'Dependents', 'Self_Employed', 'Credit_History']:
     if col in df.columns:
@@ -45,8 +41,6 @@ for col in ['LoanAmount', 'Loan_Amount_Term']:
 print("\nMissing values have been handled.")
 
 # 4. FEATURE ENGINEERING
-# (This part remains the same)
-
 df['Total_Income'] = df['ApplicantIncome'] + df['CoapplicantIncome']
 df['LoanAmount_Log'] = np.log(df['LoanAmount'] + 1)
 df['Total_Income_Log'] = np.log(df['Total_Income'] + 1)
@@ -54,7 +48,6 @@ df = df.drop(columns=['ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Tot
 print("\nFeature Engineering complete.")
 
 # 5. ENCODING CATEGORICAL FEATURES
-# (This part remains the same)
 
 categorical_cols = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Property_Area']
 df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
@@ -63,7 +56,6 @@ df['Loan_Status'] = le.fit_transform(df['Loan_Status'])
 print("\nCategorical variables encoded.")
 
 # 6. SPLIT DATA INTO TRAINING AND TESTING SETS
-# (This part remains the same)
 
 X = df.drop(columns=['Loan_Status'])
 y = df['Loan_Status']
@@ -71,7 +63,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 print(f"\nData split complete.")
 
 # 7. TRAIN MODELS AND STORE PERFORMANCE METRICS
-
 # Create a dictionary to hold the models
 models = {
     "Random Forest": RandomForestClassifier(random_state=42),
@@ -81,7 +72,6 @@ models = {
 
 # Create an empty list to store the results for comparison
 results_list = []
-
 # Loop through the models to train, evaluate, and store results
 for name, model in models.items():
     print(f"\n--- Training {name} ---")
@@ -113,7 +103,6 @@ for name, model in models.items():
 
 
 # 8. CREATE THE COMBINED COMPARISON GRAPH
-
 # Convert the results list to a pandas DataFrame
 results_df = pd.DataFrame(results_list)
 
